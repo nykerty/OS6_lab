@@ -1,0 +1,24 @@
+- name: Installing Nginx & PHP
+  hosts: all
+  become: yes
+  tasks:
+    - name: Installing Nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Installing PHP
+      apt:
+        name: php
+        state: latest
+
+    - name: Installing PHP-CLI
+      apt:
+        name: php-cli
+        state: latest
+
+    - name: Making service to enable nginx on OS starting
+      service:
+        name: nginx
+        enabled: yes
+        state: started
